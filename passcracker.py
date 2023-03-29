@@ -2,15 +2,17 @@ import hashlib
 
 welcome_message = """
 
-*(*                       
-(((((((.                             .(((((((                             *(*                       
-((.  ((( ,((((((   ((((((,  *((((((  (((      /((((((# .((((((/   ((((((. *(* /((/  ,(((((   (((((((
-((. *(((      ((/ /(((     ,(((.    (((/      /((( /((      .((  (((*     *(%#((   (((  (((  ((((/#(
-((((((.  ,((((((/  *(((((.  ,(((((( ((((      /((      ,#((((((  (((      *((((,   ((((((((  (((    
-((.      ((/ (((/      (((      ,((, (((%. *( /((      (((  (((  (((*  ,  *(*/(((  (((/      (((    
-((.      ,((((/(/ (((((((. ,((((((*   ,(((((/ /((      .(((((((   ((((((. *(* .(((. (((((((  (((   
+*
+$$$$$$$\                                                                      $$\                           
+$$  __$$\                                                                     $$ |                          
+$$ |  $$ |$$$$$$\   $$$$$$$\  $$$$$$$\  $$$$$$$\  $$$$$$\  $$$$$$\   $$$$$$$\ $$ |  $$\  $$$$$$\   $$$$$$\  
+$$$$$$$  |\____$$\ $$  _____|$$  _____|$$  _____|$$  __$$\ \____$$\ $$  _____|$$ | $$  |$$  __$$\ $$  __$$\ 
+$$  ____/ $$$$$$$ |\$$$$$$\  \$$$$$$\  $$ /      $$ |  \__|$$$$$$$ |$$ /      $$$$$$  / $$$$$$$$ |$$ |  \__|
+$$ |     $$  __$$ | \____$$\  \____$$\ $$ |      $$ |     $$  __$$ |$$ |      $$  _$$<  $$   ____|$$ |      
+$$ |     \$$$$$$$ |$$$$$$$  |$$$$$$$  |\$$$$$$$\ $$ |     \$$$$$$$ |\$$$$$$$\ $$ | \$$\ \$$$$$$$\ $$ |      
+\__|      \_______|\_______/ \_______/  \_______|\__|      \_______| \_______|\__|  \__| \_______|\__|      
+                                                                                                            
 
-  
 """
 
 menu = {
@@ -21,6 +23,7 @@ menu = {
 
 
 def print_menu():
+    # show the main menu to get the hash type
     print('Please, Select the hash type of your password: ')
     for key in menu.keys():
         print(key, ' - ', menu[key])
@@ -28,6 +31,7 @@ def print_menu():
 
 
 def decrypt_by_option(option, cipher_word):
+    # decrypt based in the selected option
     if option == 1:
         return hashlib.md5(cipher_word.strip())
     if option == 2:
@@ -37,6 +41,7 @@ def decrypt_by_option(option, cipher_word):
 
 
 def decrypt_password(option):
+    # main decrypt method
     found = False
     for word in dict_file:
         cipher_word = word.encode('utf-8')
@@ -52,6 +57,7 @@ def decrypt_password(option):
               '\033[0m' + dict_directory)
 
 
+# initialize the script
 print('\33[92m' + welcome_message + '\x1b[0m')
 print_menu()
 option = 0
@@ -64,6 +70,7 @@ while option == 0:
 
 print('\n')
 
+# get the encrypted password and the dictionary
 hashed_password = input('Insert the hashed password: ')
 dict_directory = input('Insert the dictionary directory: ')
 
