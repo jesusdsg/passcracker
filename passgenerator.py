@@ -25,6 +25,7 @@ while pwd_length == 0:
         print('\033[91m' + "Please, insert a valid lenght." +
               '\033[0m')
 
+# Get the alphabets by type
 lower = string.ascii_lowercase
 upper = string.ascii_uppercase
 num = string.digits
@@ -32,6 +33,7 @@ symbols = string.punctuation
 
 alphabet = lower + upper + num + symbols
 
+# Generate a random string using the alphabet
 generated = random.sample(alphabet, pwd_length)
 
 pwd = "".join(generated)
